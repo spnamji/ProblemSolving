@@ -1,0 +1,19 @@
+# 2058. 자릿수 더하기
+T = input()
+sum = 0
+
+for i in T: # 문자열로 입력받아 값을 하나씩 i에 넣어줌.
+    sum += int(i) # 정수형으로 변환하여 합침
+print(sum)
+
+# 응용한 풀이 1
+def sum_digit(number):
+    if number < 10: # 1의 단위이면 바로 반환
+        return number
+    return number%10 + sum_digit(number//10) # 재귀 호출로 값을 더함
+
+# 응용한 풀이 2
+def sum_digit(number):
+    return sum(map(int, str(number))) # map을 이용해서 문자 값을 정수로 변환하고 한 번에 변환한 값들을 sum으로 모두 더함
+
+print("결과 : {}".format(sum_digit(123)));
